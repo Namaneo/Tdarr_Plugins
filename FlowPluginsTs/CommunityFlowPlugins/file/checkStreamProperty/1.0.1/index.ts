@@ -244,17 +244,17 @@ const plugin = (args: IpluginInputArgs): IpluginOutputArgs => {
 
       case 'greater_than':
         const isGreater = matches.some((val) => prop > val);
-        if (!isGreater) {
+        if (isGreater) {
           const matchedVal = matches.find((val) => prop > val);
-          args.jobLog(`Stream ${index}: ${propertyToCheck} "${prop}" greater than "${matchedVal}" - condition fails`);
+          args.jobLog(`Stream ${index}: ${propertyToCheck} "${prop}" is greater than "${matchedVal}"`);
         }
         return isGreater;
 
       case 'lower_than':
         const isLower = matches.some((val) => prop < val);
-        if (!isLower) {
+        if (isLower) {
           const matchedVal = matches.find((val) => prop < val);
-          args.jobLog(`Stream ${index}: ${propertyToCheck} "${prop}" lower than "${matchedVal}" - condition fails`);
+          args.jobLog(`Stream ${index}: ${propertyToCheck} "${prop}" is lower than "${matchedVal}"`);
         }
         return isLower;
       
